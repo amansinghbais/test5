@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Mayna 💋</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 700px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #c73866;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #555;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .message {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .spicy-note {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c73866 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .spicy-note:hover {
+            transform: scale(1.05);
+        }
+
+        .hidden-message {
+            display: none;
+            background: #fff0f5;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            border: 2px dashed #c73866;
+            font-size: 1.1em;
+            color: #c73866;
+            animation: fadeIn 0.5s;
+        }
+
+        .game-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 100%);
+            border-radius: 15px;
+            border: 3px solid #ff6b9d;
+        }
+
+        .game-title {
+            font-size: 2em;
+            color: #c73866;
+            margin-bottom: 20px;
+        }
+
+        .game-card {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-area {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+        }
+
+        .kiss-target {
+            width: 100px;
+            height: 100px;
+            background: #ff6b9d;
+            border-radius: 50%;
+            margin: 20px auto;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .kiss-target:hover {
+            transform: scale(1.2);
+        }
+
+        .truth-dare-option {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .truth-dare-option:hover {
+            transform: scale(1.1);
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 20px;
+            background: #fff0f5;
+            border-radius: 10px;
+            font-size: 1.2em;
+            color: #c73866;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .strip-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .strip-card {
+            background: #c73866;
+            color: white;
+            padding: 30px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.5em;
+            transition: all 0.3s;
+        }
+
+        .strip-card:hover {
+            background: #ff6b9d;
+            transform: scale(1.05);
+        }
+
+        .strip-card.revealed {
+            background: #764ba2;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .emoji {
+            font-size: 2em;
+            margin: 10px 5px;
+            display: inline-block;
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .heart {
+            position: fixed;
+            font-size: 2em;
+            opacity: 0;
+            animation: float 4s ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .score {
+            font-size: 1.5em;
+            color: #c73866;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mayna 💕</h1>
+        <div class="subtitle">You drive me absolutely crazy...</div>
+        
+        <div class="message">
+            Every moment with you makes my heart race. You're not just beautiful, you're absolutely irresistible. 
+            The way you smile, the way you laugh, the way you look at me... it all drives me wild.
+        </div>
+
+        <div class="emoji">😘</div>
+        <div class="emoji">🔥</div>
+        <div class="emoji">💋</div>
+
+        <div class="spicy-note" onclick="revealSecret()">
+            Click here for something a little naughty... 👀
+        </div>
+
+        <div class="hidden-message" id="secretMsg">
+            I can't stop thinking about you. Every. Single. Day. 
+            The way you make me feel is just... unfair. 
+            You're sexy, you're smart, and you're mine. 
+            And I can't wait to show you just how much I want you. 😈💦
+            <br><br>
+            <strong>P.S.</strong> You better be ready when we're together next... 🔥
+        </div>
+
+        <button class="btn" onclick="moreHearts()">Send More Love 💖</button>
+
+        <!-- GAMES SECTION -->
+        <div class="game-section">
+            <div class="game-title">Naughty Games For Us 😈</div>
+            
+            <!-- Game 1: Kiss Counter -->
+            <div class="game-card" onclick="toggleGame('kissGame')">
+                <h3>💋 Kiss Me Game</h3>
+                <p>How many kisses can you give me in 10 seconds?</p>
+            </div>
+            <div class="game-area" id="kissGame">
+                <div class="kiss-target" id="kissTarget" onclick="addKiss()">💋</div>
+                <div class="score">Kisses: <span id="kissCount">0</span></div>
+                <button class="btn" onclick="startKissGame()">Start Kissing! 😘</button>
+            </div>
+
+            <!-- Game 2: Naughty Truth or Dare -->
+            <div class="game-card" onclick="toggleGame('truthDareGame')">
+                <h3>🔥 Spicy Truth or Dare</h3>
+                <p>Ready for some wild questions and challenges?</p>
+            </div>
+            <div class="game-area" id="truthDareGame">
+                <div class="truth-dare-option" onclick="getTruth()">TRUTH</div>
+                <div class="truth-dare-option" onclick="getDare()">DARE</div>
+                <div class="result-box" id="truthDareResult">Choose Truth or Dare...</div>
+            </div>
+
+            <!-- Game 3: Strip Memory -->
+            <div class="game-card" onclick="toggleGame('stripGame')">
+                <h3>🎴 Naughty Memory Game</h3>
+                <p>Match the pairs... or pay the price! 😏</p>
+            </div>
+            <div class="game-area" id="stripGame">
+                <p style="color: #c73866; margin-bottom: 15px;">Every wrong match = remove one piece of clothing! 😈</p>
+                <div class="strip-grid" id="stripGrid"></div>
+                <button class="btn" onclick="initStripGame()">New Game</button>
+                <div class="score">Mistakes: <span id="mistakes">0</span> 🔥</div>
+            </div>
+
+            <!-- Game 4: Spin the Bottle -->
+            <div class="game-card" onclick="toggleGame('spinGame')">
+                <h3>🍾 What Should We Do?</h3>
+                <p>Spin and see what happens next...</p>
+            </div>
+            <div class="game-area" id="spinGame">
+                <div style="font-size: 5em; margin: 20px 0; cursor: pointer; transition: transform 1s;" id="bottle" onclick="spinBottle()">🍾</div>
+                <button class="btn" onclick="spinBottle()">Spin It! 💫</button>
+                <div class="result-box" id="spinResult">Click to spin...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Main functions
+        function revealSecret() {
+            const msg = document.getElementById('secretMsg');
+            msg.style.display = msg.style.display === 'none' || msg.style.display === '' ? 'block' : 'none';
+        }
+
+        function toggleGame(gameId) {
+            const games = document.querySelectorAll('.game-area');
+            games.forEach(game => {
+                if(game.id !== gameId) game.style.display = 'none';
+            });
+            const game = document.getElementById(gameId);
+            game.style.display = game.style.display === 'none' || game.style.display === '' ? 'block' : 'none';
+        }
+
+        function moreHearts() {
+            for(let i = 0; i < 10; i++) {
+                setTimeout(() => createHeart(), i * 200);
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+
+        // Game 1: Kiss Counter
+        let kissCount = 0;
+        let kissGameActive = false;
+
+        function startKissGame() {
+            kissCount = 0;
+            document.getElementById('kissCount').textContent = kissCount;
+            kissGameActive = true;
+            setTimeout(() => {
+                kissGameActive = false;
+                alert(`You gave me ${kissCount} kisses! 😘 ${kissCount > 30 ? "Wow, you're passionate! 🔥" : "We need more practice! 💋"}`);
+            }, 10000);
+        }
+
+        function addKiss() {
+            if(kissGameActive) {
+                kissCount++;
+                document.getElementById('kissCount').textContent = kissCount;
+                createHeart();
+            }
+        }
+
+        // Game 2: Truth or Dare
+        const truths = [
+            "What's your wildest fantasy about us? 😈",
+            "Where's the most daring place you'd want to kiss me? 💋",
+            "What's something naughty you've thought about doing with me? 🔥",
+            "What turns you on the most about me? 😏",
+            "What's your favorite body part of mine? 👀",
+            "Have you ever had a dirty dream about me? Tell me! 💭",
+            "What's the sexiest thing I've ever done? 🌶️",
+            "What would you do if we were alone right now? 😘"
+        ];
+
+        const dares = [
+            "Send me your sexiest selfie right now! 📸",
+            "Tell me what you're wearing... in detail 😏",
+            "Give me a virtual lap dance via video call! 💃",
+            "Describe how you'd kiss me, step by step... 💋",
+            "Take off one piece of clothing! 🔥",
+            "Tell me your favorite position and why 😈",
+            "Send me a voice note moaning my name 🎤",
+            "Do a sexy dance and record it for me! 💫"
+        ];
+
+        function getTruth() {
+            const truth = truths[Math.floor(Math.random() * truths.length)];
+            document.getElementById('truthDareResult').innerHTML = `<strong>TRUTH:</strong><br>${truth}`;
+        }
+
+        function getDare() {
+            const dare = dares[Math.floor(Math.random() * dares.length)];
+            document.getElementById('truthDareResult').innerHTML = `<strong>DARE:</strong><br>${dare}`;
+        }
+
+        // Game 3: Strip Memory
+        let stripCards = [];
+        let flippedCards = [];
+        let mistakes = 0;
+
+        function initStripGame() {
+            mistakes = 0;
+            document.getElementById('mistakes').textContent = mistakes;
+            const emojis = ['💋', '🔥', '😈', '💦', '🍑', '👅'];
+            stripCards = [...emojis, ...emojis].sort(() => Math.random() - 0.5);
+            const grid = document.getElementById('stripGrid');
+            grid.innerHTML = '';
+            stripCards.forEach((emoji, index) => {
+                const card = document.createElement('div');
+                card.className = 'strip-card';
+                card.innerHTML = '❓';
+                card.dataset.emoji = emoji;
+                card.dataset.index = index;
+                card.onclick = () => flipCard(card);
+                grid.appendChild(card);
+            });
+            flippedCards = [];
+        }
+
+        function flipCard(card) {
+            if(flippedCards.length < 2 && !card.classList.contains('revealed')) {
+                card.innerHTML = card.dataset.emoji;
+                flippedCards.push(card);
+                
+                if(flippedCards.length === 2) {
+                    setTimeout(() => {
+                        if(flippedCards[0].dataset.emoji === flippedCards[1].dataset.emoji) {
+                            flippedCards.forEach(c => c.classList.add('revealed'));
+                            createHeart();
+                        } else {
+                            flippedCards.forEach(c => c.innerHTML = '❓');
+                            mistakes++;
+                            document.getElementById('mistakes').textContent = mistakes;
+                            if(mistakes % 2 === 0) {
+                                alert("That's another mistake! Time to remove something... 😏🔥");
+                            }
+                        }
+                        flippedCards = [];
+                    }, 800);
+                }
+            }
+        }
+
+        // Game 4: Spin the Bottle
+        const activities = [
+            "Make out for 2 minutes straight! 💋",
+            "Give me a sensual massage... 👐",
+            "Bedroom time RIGHT NOW! 🛏️🔥",
+            "Strip tease for me! 💃",
+            "Take a steamy shower together 🚿💦",
+            "Slow dance... naked 😈",
+            "Play with ice cubes on each other 🧊",
+            "Truth or dare - loser strips! 🎲",
+            "Candlelit bubble bath together 🕯️🛁",
+            "Role play time! Pick your fantasy 🎭"
+        ];
+
+        function spinBottle() {
+            const bottle = document.getElementById('bottle');
+            const rotations = 1800 + Math.random() * 1800;
+            bottle.style.transform = `rotate(${rotations}deg)`;
+            
+            setTimeout(() => {
+                const activity = activities[Math.floor(Math.random() * activities.length)];
+                document.getElementById('spinResult').innerHTML = `<strong>${activity}</strong>`;
+                bottle.style.transform = 'rotate(0deg)';
+            }, 1000);
+        }
+
+        // Initialize
+        window.onload = () => {
+            for(let i = 0; i < 5; i++) {
+                setTimeout(() => createHeart(), i * 1000);
+            }
+            initStripGame();
+        };
+    </script>
+</body>
+</html>
